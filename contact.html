@@ -2,11 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Contact Us - Hazy's Beauty & Spa</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* General Styles */
         * {
             margin: 0;
             padding: 0;
@@ -17,6 +16,7 @@
         body {
             line-height: 1.6;
             color: #333;
+            overflow-x: hidden; /* Prevent horizontal scroll */
         }
         
         .container {
@@ -46,44 +46,73 @@
         /* Header Styles */
         header {
             background-color: white;
-            padding: 15px 0;
+            padding: 10px 0;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            position: relative; /* For mobile menu positioning */
         }
         
         nav {
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-wrap: wrap;
         }
         
         nav a {
-            margin: 0 15px;
+            margin: 8px 15px;
             text-decoration: none;
             color: #333;
             font-weight: 500;
-            transition: color 0.3s ease;
         }
         
         nav a:hover {
             color: #00C4C4;
         }
         
-        /* Improved Hero Section */
+        .menu-toggle {
+            display: none;
+            color: #00C4C4;
+            font-size: 24px;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+        
+        /* Mobile Menu */
+        .mobile-nav {
+            display: none;
+            width: 100%;
+            background-color: white;
+            padding: 10px 0;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .mobile-nav a {
+            margin: 10px 0;
+            font-size: 16px;
+            width: 100%;
+            text-align: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .mobile-nav a:last-child {
+            border-bottom: none;
+        }
+        
+        /* Hero Section with Modern Styling */
         .hero {
             background-image: url('img/back.jpg');
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
-            color: white;
-            height: 80vh;
+            height: 60vh; /* Reduced height for mobile */
+            min-height: 300px; /* Ensure minimum height */
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
             text-align: center;
+            color: white;
         }
         
         .hero::before {
@@ -91,9 +120,9 @@
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3));
             z-index: 1;
         }
         
@@ -101,76 +130,73 @@
             position: relative;
             z-index: 2;
             max-width: 800px;
-            padding: 40px;
-            border-radius: 12px;
-            background-color: rgba(0, 0, 0, 0.3);
+            width: 90%; /* More responsive width */
+            padding: 25px; /* Smaller padding on mobile */
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.2);
             backdrop-filter: blur(5px);
-            transform: translateY(-20px);
-            animation: fadeInUp 1s ease-out forwards;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-in-out;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         .hero h1 {
-            color: white;
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-size: 2.5rem; /* Smaller font on mobile */
             font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
             letter-spacing: 1px;
         }
         
         .hero p {
-            max-width: 600px;
-            margin: 0 auto 25px;
-            font-size: 1.4rem;
+            font-size: 1.1rem; /* Smaller font on mobile */
+            margin-bottom: 20px;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
-            line-height: 1.6;
+            max-width: 100%; /* Full width on mobile */
+            margin-left: auto;
+            margin-right: auto;
         }
         
-        .hero-button {
+        .hero-btn {
             display: inline-block;
             background-color: #00C4C4;
             color: white;
-            padding: 12px 30px;
+            padding: 10px 25px; /* Slightly smaller padding */
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            letter-spacing: 1px;
+            font-size: 1rem; /* Slightly smaller font */
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            margin-top: 15px;
+            border: 2px solid #00C4C4;
+            margin-top: 10px;
         }
         
-        .hero-button:hover {
-            background-color: white;
-            color: #00C4C4;
+        .hero-btn:hover {
+            background-color: transparent;
+            border-color: white;
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
         
+       
+     
         /* Contact Section */
         .contact-section {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 80px 20px;
+            padding: 40px 15px;
         }
         
         .contact-section h2 {
             color: #00C4C4;
             text-align: center;
-            margin-bottom: 40px;
-            font-size: 2.5rem;
+            margin-bottom: 30px;
+            font-size: 1.8rem;
             position: relative;
             padding-bottom: 15px;
         }
@@ -181,43 +207,44 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
+            width: 60px;
             height: 3px;
             background-color: #00C4C4;
         }
         
         .contact-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            grid-template-columns: 1fr;
+            gap: 30px;
         }
         
         .contact-info {
-            padding: 20px;
+            padding: 15px;
         }
         
         .contact-info h3 {
             color: #00C4C4;
-            margin-bottom: 20px;
-            font-size: 1.8rem;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
         }
         
         .contact-info p {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             display: flex;
             align-items: flex-start;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
         
         .contact-info p strong {
-            min-width: 30px;
-            margin-right: 10px;
+            min-width: 25px;
+            margin-right: 8px;
         }
         
         .contact-info a {
             color: #333;
             text-decoration: none;
             transition: color 0.3s ease;
+            word-break: break-all;
         }
         
         .contact-info a:hover {
@@ -226,12 +253,12 @@
         
         .map-container {
             width: 100%;
-            height: 400px;
+            height: 300px;
             border: 1px solid #ddd;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            margin-top: 20px;
+            margin-top: 15px;
         }
         
         .map-container iframe {
@@ -242,7 +269,7 @@
         
         /* Form Styles */
         .contact-form {
-            padding: 30px;
+            padding: 20px;
             background-color: #f9f9f9;
             border-radius: 12px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
@@ -250,25 +277,26 @@
         
         .contact-form h3 {
             color: #00C4C4;
-            margin-bottom: 25px;
-            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
         }
         
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
         
         .form-group label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             font-weight: 500;
             color: #444;
+            font-size: 0.95rem;
         }
         
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 12px 15px;
+            padding: 10px 12px;
             border: 1px solid #ddd;
             border-radius: 6px;
             font-family: inherit;
@@ -284,7 +312,7 @@
         }
         
         .form-group textarea {
-            min-height: 150px;
+            min-height: 120px;
             resize: vertical;
         }
         
@@ -292,15 +320,16 @@
             background-color: #00C4C4;
             color: white;
             border: none;
-            padding: 15px 30px;
+            padding: 12px 25px;
             border-radius: 50px;
             cursor: pointer;
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1rem;
             letter-spacing: 1px;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(0,196,196,0.3);
             display: inline-block;
+            width: 100%;
         }
         
         button:hover {
@@ -313,7 +342,7 @@
         .footer {
             background-color: #00C4C4;
             color: white;
-            padding: 60px 0 30px;
+            padding: 40px 0 20px;
         }
         
         .footer-top {
@@ -321,28 +350,29 @@
         }
         
         .footer-info h2 {
-            font-size: 32px;
-            margin-bottom: 20px;
+            font-size: 28px;
+            margin-bottom: 15px;
         }
         
         /* Updated social icons styles */
         .social-icons {
             display: flex;
             justify-content: center;
-            margin: 30px 0;
+            margin: 20px 0;
+            flex-wrap: wrap;
         }
         
         .social-icons a {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 50px;
-            height: 50px;
-            margin: 0 10px;
+            width: 40px;
+            height: 40px;
+            margin: 5px;
             border-radius: 50%;
             background-color: white;
             color: #00C4C4;
-            font-size: 24px;
+            font-size: 18px;
             text-decoration: none;
             transition: all 0.3s ease;
             box-shadow: 0 3px 10px rgba(0,0,0,0.1);
@@ -354,20 +384,20 @@
         }
         
         .copyright {
-            margin-top: 20px;
-            padding-top: 20px;
+            margin-top: 15px;
+            padding-top: 15px;
             border-top: 1px solid rgba(255, 255, 255, 0.2);
             text-align: center;
-            font-size: 14px;
+            font-size: 12px;
         }
         
         /* Scroll to Top Button */
         .scrollup {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 45px;
-            height: 45px;
+            bottom: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
             background-color: #00C4C4;
             color: white;
             border-radius: 50%;
@@ -379,6 +409,7 @@
             transition: all 0.3s ease;
             box-shadow: 0 3px 10px rgba(0,0,0,0.2);
             z-index: 99;
+            font-size: 16px;
         }
         
         .scrollup:hover {
@@ -387,10 +418,10 @@
         }
         
         /* Responsive Design */
-        @media (max-width: 992px) {
+        @media (min-width: 768px) {
             .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 50px;
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
             }
             
             .hero h1 {
@@ -400,70 +431,55 @@
             .hero p {
                 font-size: 1.2rem;
             }
+            
+            button {
+                width: auto;
+            }
         }
         
-        @media (max-width: 768px) {
-            .hero {
-                height: 70vh;
-            }
-            
-            .hero-content {
-                padding: 30px 20px;
-            }
-            
+        @media (min-width: 992px) {
             .hero h1 {
-                font-size: 2.2rem;
+                font-size: 3rem;
             }
             
             .hero p {
-                font-size: 1.1rem;
-            }
-            
-            nav {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            nav a {
-                margin: 5px 10px;
-                font-size: 0.9rem;
-            }
-            
-            .social-icons a {
-                width: 40px;
-                height: 40px;
-                font-size: 18px;
-                margin: 0 8px;
+                font-size: 1.3rem;
             }
             
             .contact-section h2 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             
             .contact-form,
             .contact-info {
-                padding: 15px;
+                padding: 25px;
             }
         }
         
-        @media (max-width: 480px) {
+        /* Very small devices (phones, 360px and down) */
+        @media (max-width: 360px) {
             .hero h1 {
                 font-size: 1.8rem;
             }
             
-            .hero-button {
-                padding: 10px 20px;
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            nav a {
+                font-size: 12px;
+                margin: 3px 5px;
+            }
+            
+            .contact-info p {
                 font-size: 0.9rem;
             }
-            
-            .contact-section {
-                padding: 40px 15px;
-            }
-            
-            button {
-                padding: 12px 25px;
-                font-size: 1rem;
-                width: 100%;
+        }
+        
+        /* Prevent zooming on form inputs on mobile */
+        @media screen and (max-width: 767px) {
+            input, select, textarea {
+                font-size: 16px !important;
             }
         }
     </style>
@@ -494,14 +510,9 @@
         <div class="hero-content">
             <h1>Contact Hazy's Beauty & Spa</h1>
             <p>We'd love to hear from you! Reach out to book an appointment or learn more about our luxurious treatments and services.</p>
-            <a href="#contact-form" class="hero-button">GET IN TOUCH</a>
         </div>
     </section>
-    
-    <!-- Contact Section -->
-    <section class="contact-section">
-        <h2>Get In Touch</h2>
-        
+
         <div class="contact-grid">
             <!-- Contact Information -->
             <div class="contact-info">
@@ -510,7 +521,7 @@
                 <p><strong><i class="fas fa-phone-alt"></i></strong> <a href="tel:+27784257651">078 425 7651</a></p>
                 <p><strong><i class="fas fa-envelope"></i></strong> <a href="mailto:Kamogelosekgota993@gmail.com">Kamogelosekgota993@gmail.com</a></p>
                 
-                <h3 style="margin-top: 30px;">Operating Hours</h3>
+                <h3 style="margin-top: 25px;">Operating Hours</h3>
                 <p><strong>Mon-Fri:</strong> 8:00 AM - 6:00 PM</p>
                 <p><strong>Saturday:</strong> 9:00 AM - 5:00 PM</p>
                 <p><strong>Sunday:</strong> 10:00 AM - 3:00 PM</p>
@@ -625,14 +636,17 @@
         });
 
         // Show/hide scroll to top button
+        const scrollBtn = document.querySelector('.scrollup');
         window.addEventListener('scroll', function() {
-            const scrollBtn = document.querySelector('.scrollup');
             if (window.pageYOffset > 300) {
-                scrollBtn.style.opacity = '1';
+                scrollBtn.style.display = 'flex';
             } else {
-                scrollBtn.style.opacity = '0';
+                scrollBtn.style.display = 'none';
             }
         });
+        
+        // Initially hide the button
+        scrollBtn.style.display = 'none';
     </script>
 </body>
 </html>
