@@ -6,25 +6,8 @@
     <title>About Us - Hazy's Beauty & Spa</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Top Bar */
-        .top-bar {
-            background-color: #f8f8f8;
-            padding: 5px 0;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .social-links {
-            text-align: right;
-        }
-        
-        .social-links a {
-            color: #00C4C4;
-            margin-left: 10px;
-            font-size: 16px;
-        }
         /* Base Styles */
-         /* General Styles */
-         * {
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -42,6 +25,22 @@
             padding: 0 15px;
         }
         
+        /* Top Bar */
+        .top-bar {
+            background-color: #f8f8f8;
+            padding: 5px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .social-links {
+            text-align: right;
+        }
+        
+        .social-links a {
+            color: #00C4C4;
+            margin-left: 10px;
+            font-size: 16px;
+        }
         
         /* Header Styles */
         header {
@@ -61,25 +60,25 @@
             text-decoration: none;
             color: #333;
             font-weight: 500;
+            transition: color 0.3s ease;
         }
         
         nav a:hover {
             color: #00C4C4;
         }
-         /* Hero Section with Modern Styling */
-         .hero {
+        
+        /* Updated Modern Hero Section */
+        .hero {
             background-image: url('img/back.jpg');
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
-            text-align: center;
-            padding: 150px 20px;
+            height: 80vh;
             position: relative;
-            color: white;
-            height: 70vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            text-align: center;
+            color: white;
         }
         
         .hero::before {
@@ -87,9 +86,9 @@
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.4);
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3));
             z-index: 1;
         }
         
@@ -97,42 +96,56 @@
             position: relative;
             z-index: 2;
             max-width: 800px;
-            padding: 30px;
-            border-radius: 8px;
-            background-color: rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(3px);
+            padding: 40px;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-in-out;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         .hero h1 {
-            color: white;
-            font-size: 3rem;
+            font-size: 3.5rem;
+            font-weight: 700;
             margin-bottom: 20px;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
-            font-weight: 600;
+            letter-spacing: 1px;
         }
         
         .hero p {
-            max-width: 600px;
-            margin: 0 auto;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
+            margin-bottom: 30px;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
-        }
-        /* Main Content */
-        .hero {
-            background-color: #f0f0f0;
-            text-align: center;
-            padding: 60px 20px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
-        .hero h1 {
-            color: #00C4C4;
-            font-size: 2.5rem;
-            margin-bottom: 15px;
+        .hero-btn {
+            display: inline-block;
+            background-color: #00C4C4;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid #00C4C4;
+            margin-top: 10px;
         }
         
-        .hero p {
-            max-width: 800px;
-            margin: 0 auto;
+        .hero-btn:hover {
+            background-color: transparent;
+            border-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
         
         /* About Section */
@@ -188,6 +201,12 @@
             background-color: white;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
         }
         
         .team-photo {
@@ -235,6 +254,12 @@
             padding: 30px 20px;
             border-radius: 8px;
             background-color: #f9f9f9;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
         
         .value-icon {
@@ -272,6 +297,11 @@
             border-radius: 8px;
             margin-bottom: 30px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .testimonial:hover {
+            transform: translateY(-5px);
         }
         
         .testimonial p {
@@ -284,9 +314,8 @@
             color: #00C4C4;
         }
     
-      
-         /* Footer - Styled */
-       .footer {
+        /* Footer */
+        .footer {
             background-color: #00C4C4;
             color: white;
             padding: 60px 0 30px;
@@ -301,7 +330,7 @@
             margin-bottom: 20px;
         }
         
-        /* Updated social icons styles */
+        /* Social icons styles */
         .social-icons {
             display: flex;
             justify-content: center;
@@ -352,42 +381,46 @@
             justify-content: center;
             text-decoration: none;
             opacity: 0.7;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.3s ease, transform 0.3s ease;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
         
         .scrollup:hover {
             opacity: 1;
+            transform: translateY(-3px);
         }
         
-        
-    /* Responsive Design */
-    @media (max-width: 992px) {
-            .treatments-overview .container {
-                grid-template-columns: 1fr;
-            }
-            
-            .treatment-content {
-                order: 2;
-                text-align: center;
-            }
-            
-            .treatment-image {
-                order: 1;
-                margin-bottom: 30px;
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
         
         @media (max-width: 768px) {
+            .hero {
+                height: 70vh;
+            }
+            
+            .hero-content {
+                padding: 30px 20px;
+                width: 90%;
+            }
+            
             .hero h1 {
-                font-size: 40px;
+                font-size: 2.5rem;
             }
             
             .hero p {
-                font-size: 18px;
+                font-size: 1.1rem;
             }
             
-            .principles-grid {
+            .hero-btn {
+                padding: 10px 25px;
+                font-size: 1rem;
+            }
+            
+            .values-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -398,18 +431,32 @@
                 margin: 0 8px;
             }
         }
-       
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
- <!-- Top Bar -->
- <div class="top-bar">
-    <div class="container">
-        <div class="social-links">
-            <a href="https://www.facebook.com/kamogelohaze"><i class="fab fa-facebook-f"></i> Follow Us</a>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.facebook.com/kamogelohaze"><i class="fab fa-facebook-f"></i> Follow Us</a>
+            </div>
         </div>
     </div>
-</div>
-<body>
+    
     <!-- Header with Navigation -->
     <header>
         <nav>
@@ -421,10 +468,13 @@
         </nav>
     </header>
     
-    <!-- Hero Section -->
+    <!-- Updated Hero Section -->
     <section class="hero">
-        <h1>About Hazy's Beauty & Spa</h1>
-        <p>Discover our story and what makes our spa experience special</p>
+        <div class="hero-content">
+            <h1>About Hazy's Beauty & Spa</h1>
+            <p>Discover our story and what makes our spa experience uniquely rejuvenating for body, mind and soul</p>
+            <a href="booking.html" class="hero-btn">Book Your Experience</a>
+        </div>
     </section>
     
     <!-- About Section -->
@@ -547,5 +597,32 @@
   
     <!-- Scroll to Top Button -->
     <a href="#" class="scrollup"><i class="fas fa-angle-up"></i></a>
+
+    <!-- Simple JavaScript for Scroll to Top functionality -->
+    <script>
+        // Get the scroll to top button
+        const scrollBtn = document.querySelector('.scrollup');
+        
+        // Show/hide the button based on scroll position
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                scrollBtn.style.display = 'flex';
+            } else {
+                scrollBtn.style.display = 'none';
+            }
+        });
+        
+        // Initially hide the button
+        scrollBtn.style.display = 'none';
+        
+        // Smooth scroll to top when clicked
+        scrollBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
 </body>
 </html>
