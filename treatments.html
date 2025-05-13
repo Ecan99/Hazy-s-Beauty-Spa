@@ -69,18 +69,16 @@
         
         /* Hero Section with Modern Styling */
         .hero {
-            background-image: url('./img/back.jpg');
+            background-image: url('img/back.jpg');
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
-            text-align: center;
-            padding: 150px 20px;
-            position: relative;
-            color: white;
             height: 80vh;
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
+            text-align: center;
+            color: white;
         }
         
         .hero::before {
@@ -88,9 +86,9 @@
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.5);
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3));
             z-index: 1;
         }
         
@@ -99,53 +97,83 @@
             z-index: 2;
             max-width: 800px;
             padding: 40px;
-            border-radius: 12px;
-            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.2);
             backdrop-filter: blur(5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-in-out;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         .hero h1 {
-            color: white;
             font-size: 3.5rem;
-            margin-bottom: 20px;
-            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
             font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+            letter-spacing: 1px;
         }
         
         .hero p {
-            max-width: 600px;
-            margin: 0 auto 30px auto;
             font-size: 1.4rem;
+            margin-bottom: 30px;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .hero-btn {
             display: inline-block;
-            padding: 12px 30px;
-            background: linear-gradient(135deg, #00C4C4, #009090);
+            background-color: #00C4C4;
             color: white;
-            text-decoration: none;
+            padding: 12px 30px;
             border-radius: 50px;
+            text-decoration: none;
             font-weight: 600;
             font-size: 1.1rem;
             transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border: 2px solid #00C4C4;
+            margin-top: 10px;
         }
         
         .hero-btn:hover {
+            background-color: transparent;
+            border-color: white;
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
         
-        /* Old Treatments Hero Section - Hidden/Replaced */
-        .treatments-hero {
-            display: none; /* Hide the old hero section */
+        /* About Section */
+        .about-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            text-align: center;
         }
         
-        /* Treatment Categories Section */
+        .about-section h2 {
+            color: #00C4C4;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+        }
+        
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+        
+        .about-content p {
+            margin-bottom: 25px;
+        }
+        eatment Categories Section */
         .treatment-categories {
             padding: 60px 0;
         }
