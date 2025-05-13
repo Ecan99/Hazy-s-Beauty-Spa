@@ -6,16 +6,17 @@
     <title>About Us - Hazy's Beauty & Spa</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Base Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: Arial, sans-serif;
         }
+        
         body {
             line-height: 1.6;
             color: #333;
+            overflow-x: hidden; /* Prevent horizontal scroll */
         }
         
         .container {
@@ -47,32 +48,65 @@
             background-color: white;
             padding: 10px 0;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: relative; /* For mobile menu positioning */
         }
         
         nav {
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-wrap: wrap;
         }
         
         nav a {
-            margin: 0 15px;
+            margin: 8px 15px;
             text-decoration: none;
             color: #333;
             font-weight: 500;
-            transition: color 0.3s ease;
         }
         
         nav a:hover {
             color: #00C4C4;
         }
         
-        /* Updated Modern Hero Section */
+        .menu-toggle {
+            display: none;
+            color: #00C4C4;
+            font-size: 24px;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+        
+        /* Mobile Menu */
+        .mobile-nav {
+            display: none;
+            width: 100%;
+            background-color: white;
+            padding: 10px 0;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .mobile-nav a {
+            margin: 10px 0;
+            font-size: 16px;
+            width: 100%;
+            text-align: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .mobile-nav a:last-child {
+            border-bottom: none;
+        }
+        
+        /* Hero Section with Modern Styling */
         .hero {
             background-image: url('img/back.jpg');
             background-size: cover;
             background-position: center;
-            height: 80vh;
+            height: 60vh; /* Reduced height for mobile */
+            min-height: 300px; /* Ensure minimum height */
             position: relative;
             display: flex;
             align-items: center;
@@ -96,7 +130,8 @@
             position: relative;
             z-index: 2;
             max-width: 800px;
-            padding: 40px;
+            width: 90%; /* More responsive width */
+            padding: 25px; /* Smaller padding on mobile */
             border-radius: 10px;
             background: rgba(0, 0, 0, 0.2);
             backdrop-filter: blur(5px);
@@ -111,18 +146,18 @@
         }
         
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 2.5rem; /* Smaller font on mobile */
             font-weight: 700;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
             letter-spacing: 1px;
         }
         
         .hero p {
-            font-size: 1.4rem;
-            margin-bottom: 30px;
+            font-size: 1.1rem; /* Smaller font on mobile */
+            margin-bottom: 20px;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
-            max-width: 600px;
+            max-width: 100%; /* Full width on mobile */
             margin-left: auto;
             margin-right: auto;
         }
@@ -131,11 +166,11 @@
             display: inline-block;
             background-color: #00C4C4;
             color: white;
-            padding: 12px 30px;
+            padding: 10px 25px; /* Slightly smaller padding */
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1rem; /* Slightly smaller font */
             transition: all 0.3s ease;
             border: 2px solid #00C4C4;
             margin-top: 10px;
@@ -152,52 +187,52 @@
         .about-section {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 60px 20px;
+            padding: 40px 20px; /* Reduced padding on mobile */
             text-align: center;
         }
         
         .about-section h2 {
             color: #00C4C4;
             text-align: center;
-            margin-bottom: 40px;
-            font-size: 2rem;
+            margin-bottom: 30px;
+            font-size: 1.8rem; /* Smaller font on mobile */
         }
         
         .about-content {
             max-width: 800px;
             margin: 0 auto;
             line-height: 1.8;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
         
         .about-content p {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
         
         /* Team Section */
         .team-section {
             background-color: #f9f9f9;
-            padding: 60px 20px;
+            padding: 40px 15px; /* Reduced padding */
         }
         
         .team-section h2 {
             color: #00C4C4;
             text-align: center;
-            margin-bottom: 40px;
-            font-size: 2rem;
+            margin-bottom: 30px; /* Reduced margin */
+            font-size: 1.8rem; /* Smaller font */
         }
         
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+            gap: 20px; /* Reduced gap */
             max-width: 1200px;
             margin: 0 auto;
         }
         
         .team-member {
             text-align: center;
-            padding: 20px;
+            padding: 15px; /* Reduced padding */
             background-color: white;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -210,28 +245,34 @@
         }
         
         .team-photo {
-            width: 150px;
-            height: 150px;
+            width: 120px; /* Smaller photo */
+            height: 120px; /* Smaller photo */
             border-radius: 50%;
             object-fit: cover;
-            margin: 0 auto 20px;
+            margin: 0 auto 15px; /* Reduced margin */
             background-color: #f0f0f0;
         }
         
         .team-member h3 {
             color: #00C4C4;
             margin-bottom: 5px;
+            font-size: 1.2rem; /* Adjusted font */
         }
         
         .team-member p.title {
             font-style: italic;
-            margin-bottom: 15px;
+            margin-bottom: 10px; /* Reduced margin */
             color: #666;
+            font-size: 0.9rem; /* Smaller font */
+        }
+        
+        .team-member p {
+            font-size: 0.9rem; /* Smaller font */
         }
         
         /* Values Section */
         .values-section {
-            padding: 60px 20px;
+            padding: 40px 15px; /* Reduced padding */
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -239,19 +280,19 @@
         .values-section h2 {
             color: #00C4C4;
             text-align: center;
-            margin-bottom: 40px;
-            font-size: 2rem;
+            margin-bottom: 30px; /* Reduced margin */
+            font-size: 1.8rem; /* Smaller font */
         }
         
         .values-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            gap: 20px; /* Reduced gap */
         }
         
         .value-card {
             text-align: center;
-            padding: 30px 20px;
+            padding: 20px 15px; /* Reduced padding */
             border-radius: 8px;
             background-color: #f9f9f9;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -263,27 +304,32 @@
         }
         
         .value-icon {
-            font-size: 2.5rem;
+            font-size: 2rem; /* Smaller icon */
             color: #00C4C4;
-            margin-bottom: 15px;
+            margin-bottom: 10px; /* Reduced margin */
         }
         
         .value-card h3 {
             color: #00C4C4;
-            margin-bottom: 15px;
+            margin-bottom: 10px; /* Reduced margin */
+            font-size: 1.2rem; /* Adjusted font */
+        }
+        
+        .value-card p {
+            font-size: 0.9rem; /* Smaller font */
         }
         
         /* Testimonials Section */
         .testimonials-section {
             background-color: #f0f0f0;
-            padding: 60px 20px;
+            padding: 40px 15px; /* Reduced padding */
         }
         
         .testimonials-section h2 {
             color: #00C4C4;
             text-align: center;
-            margin-bottom: 40px;
-            font-size: 2rem;
+            margin-bottom: 30px; /* Reduced margin */
+            font-size: 1.8rem; /* Smaller font */
         }
         
         .testimonials-container {
@@ -292,10 +338,10 @@
         }
         
         .testimonial {
-            padding: 30px;
+            padding: 20px; /* Reduced padding */
             background-color: white;
             border-radius: 8px;
-            margin-bottom: 30px;
+            margin-bottom: 20px; /* Reduced margin */
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
         }
@@ -306,19 +352,21 @@
         
         .testimonial p {
             font-style: italic;
-            margin-bottom: 15px;
+            margin-bottom: 10px; /* Reduced margin */
+            font-size: 0.95rem; /* Smaller font */
         }
         
         .testimonial .client-name {
             font-weight: bold;
             color: #00C4C4;
+            font-size: 0.9rem; /* Smaller font */
         }
     
         /* Footer */
         .footer {
             background-color: #00C4C4;
             color: white;
-            padding: 60px 0 30px;
+            padding: 40px 0 20px; /* Reduced padding */
         }
         
         .footer-top {
@@ -326,28 +374,29 @@
         }
         
         .footer-info h2 {
-            font-size: 32px;
-            margin-bottom: 20px;
+            font-size: 28px; /* Smaller font */
+            margin-bottom: 15px; /* Reduced margin */
         }
         
         /* Social icons styles */
         .social-icons {
             display: flex;
             justify-content: center;
-            margin: 30px 0;
+            margin: 20px 0; /* Reduced margin */
+            flex-wrap: wrap; /* Allow wrapping on small screens */
         }
         
         .social-icons a {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 50px;
-            height: 50px;
-            margin: 0 10px;
+            width: 40px; /* Smaller size */
+            height: 40px; /* Smaller size */
+            margin: 5px; /* Reduced margin */
             border-radius: 50%;
             background-color: white;
             color: #00C4C4;
-            font-size: 24px;
+            font-size: 18px; /* Smaller icon */
             text-decoration: none;
             transition: all 0.3s ease;
             box-shadow: 0 3px 10px rgba(0,0,0,0.1);
@@ -359,20 +408,20 @@
         }
         
         .copyright {
-            margin-top: 20px;
-            padding-top: 20px;
+            margin-top: 15px; /* Reduced margin */
+            padding-top: 15px; /* Reduced padding */
             border-top: 1px solid rgba(255, 255, 255, 0.2);
             text-align: center;
-            font-size: 14px;
+            font-size: 12px; /* Smaller font */
         }
         
         /* Scroll to Top Button */
         .scrollup {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
+            bottom: 15px; /* Adjusted position */
+            right: 15px; /* Adjusted position */
+            width: 35px; /* Smaller button */
+            height: 35px; /* Smaller button */
             background-color: #00C4C4;
             color: white;
             border-radius: 50%;
@@ -383,6 +432,7 @@
             opacity: 0.7;
             transition: opacity 0.3s ease, transform 0.3s ease;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            font-size: 14px; /* Smaller icon */
         }
         
         .scrollup:hover {
@@ -395,54 +445,127 @@
             .values-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
         }
         
         @media (max-width: 768px) {
             .hero {
-                height: 70vh;
+                height: 55vh;
             }
             
             .hero-content {
-                padding: 30px 20px;
-                width: 90%;
+                padding: 25px 15px;
             }
             
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
             
             .hero p {
-                font-size: 1.1rem;
+                font-size: 1rem;
             }
             
             .hero-btn {
-                padding: 10px 25px;
-                font-size: 1rem;
+                padding: 8px 20px;
+                font-size: 0.9rem;
             }
             
             .values-grid {
                 grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 0 auto;
             }
             
             .social-icons a {
-                width: 45px;
-                height: 45px;
-                font-size: 20px;
-                margin: 0 8px;
+                width: 38px;
+                height: 38px;
+                font-size: 16px;
+            }
+            
+            /* Mobile navigation adjustments */
+            nav {
+                justify-content: space-around;
+                padding: 5px 0;
+            }
+            
+            nav a {
+                margin: 5px;
+                font-size: 12px;
+                padding: 5px;
             }
         }
         
         @media (max-width: 480px) {
+            .hero {
+                height: 50vh;
+                min-height: 350px;
+            }
+            
             .hero h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
             
             .hero p {
-                font-size: 1rem;
+                font-size: 0.95rem;
             }
             
             .team-grid {
                 grid-template-columns: 1fr;
+                max-width: 350px;
+            }
+            
+            .about-section h2,
+            .team-section h2,
+            .values-section h2,
+            .testimonials-section h2 {
+                font-size: 1.5rem;
+            }
+            
+            /* Stack social links vertically on very small screens */
+            .social-links a {
+                display: block;
+                margin: 5px 0;
+                text-align: center;
+            }
+            
+            /* Adjust footer spacing */
+            .footer {
+                padding: 30px 0 15px;
+            }
+            
+            .footer-info h2 {
+                font-size: 24px;
+            }
+        }
+        
+        /* Very small devices (phones, 360px and down) */
+        @media (max-width: 360px) {
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            
+            nav a {
+                font-size: 11px;
+                padding: 3px;
+            }
+            
+            .team-photo {
+                width: 100px;
+                height: 100px;
+            }
+        }
+        
+        /* Prevent zooming on form inputs on mobile */
+        @media screen and (max-width: 767px) {
+            input, select, textarea {
+                font-size: 16px !important;
             }
         }
     </style>
