@@ -17,6 +17,7 @@
         body {
             line-height: 1.6;
             color: #333;
+            overflow-x: hidden; /* Prevent horizontal scroll */
         }
         
         .container {
@@ -48,16 +49,18 @@
             background-color: white;
             padding: 10px 0;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: relative; /* For mobile menu positioning */
         }
         
         nav {
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-wrap: wrap;
         }
         
         nav a {
-            margin: 0 15px;
+            margin: 8px 15px;
             text-decoration: none;
             color: #333;
             font-weight: 500;
@@ -67,12 +70,44 @@
             color: #00C4C4;
         }
         
+        .menu-toggle {
+            display: none;
+            color: #00C4C4;
+            font-size: 24px;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+        
+        /* Mobile Menu */
+        .mobile-nav {
+            display: none;
+            width: 100%;
+            background-color: white;
+            padding: 10px 0;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .mobile-nav a {
+            margin: 10px 0;
+            font-size: 16px;
+            width: 100%;
+            text-align: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .mobile-nav a:last-child {
+            border-bottom: none;
+        }
+        
         /* Hero Section with Modern Styling */
         .hero {
             background-image: url('img/back.jpg');
             background-size: cover;
             background-position: center;
-            height: 80vh;
+            height: 60vh; /* Reduced height for mobile */
+            min-height: 300px; /* Ensure minimum height */
             position: relative;
             display: flex;
             align-items: center;
@@ -96,7 +131,8 @@
             position: relative;
             z-index: 2;
             max-width: 800px;
-            padding: 40px;
+            width: 90%; /* More responsive width */
+            padding: 25px; /* Smaller padding on mobile */
             border-radius: 10px;
             background: rgba(0, 0, 0, 0.2);
             backdrop-filter: blur(5px);
@@ -111,18 +147,18 @@
         }
         
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 2.5rem; /* Smaller font on mobile */
             font-weight: 700;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
             letter-spacing: 1px;
         }
         
         .hero p {
-            font-size: 1.4rem;
-            margin-bottom: 30px;
+            font-size: 1.1rem; /* Smaller font on mobile */
+            margin-bottom: 20px;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
-            max-width: 600px;
+            max-width: 100%; /* Full width on mobile */
             margin-left: auto;
             margin-right: auto;
         }
@@ -131,11 +167,11 @@
             display: inline-block;
             background-color: #00C4C4;
             color: white;
-            padding: 12px 30px;
+            padding: 10px 25px; /* Slightly smaller padding */
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1rem; /* Slightly smaller font */
             transition: all 0.3s ease;
             border: 2px solid #00C4C4;
             margin-top: 10px;
@@ -152,43 +188,44 @@
         .about-section {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 60px 20px;
+            padding: 40px 20px; /* Reduced padding on mobile */
             text-align: center;
         }
         
         .about-section h2 {
             color: #00C4C4;
             text-align: center;
-            margin-bottom: 40px;
-            font-size: 2rem;
+            margin-bottom: 30px;
+            font-size: 1.8rem; /* Smaller font on mobile */
         }
         
         .about-content {
             max-width: 800px;
             margin: 0 auto;
             line-height: 1.8;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
         
         .about-content p {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
-        eatment Categories Section */
+        
+        /* Treatment Categories Section */
         .treatment-categories {
-            padding: 60px 0;
+            padding: 40px 0; /* Reduced padding on mobile */
         }
         
         .treatment-categories h2 {
             text-align: center;
             color: #00C4C4;
-            margin-bottom: 40px;
-            font-size: 32px;
+            margin-bottom: 30px;
+            font-size: 1.8rem; /* Smaller font on mobile */
         }
         
         .categories-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Smaller min-width */
+            gap: 20px; /* Reduced gap on mobile */
         }
         
         .category-card {
@@ -203,7 +240,7 @@
         }
         
         .category-image {
-            height: 250px;
+            height: 180px; /* Smaller height on mobile */
             background-color: #f0f0f0;
             display: flex;
             align-items: center;
@@ -218,95 +255,99 @@
         }
         
         .category-details {
-            padding: 20px;
+            padding: 15px; /* Reduced padding */
         }
         
         .category-title {
             color: #00C4C4;
-            margin-bottom: 10px;
-            font-size: 20px;
+            margin-bottom: 8px;
+            font-size: 18px; /* Smaller font */
         }
         
         .category-description {
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             color: #666;
+            font-size: 14px; /* Smaller font */
         }
         
         /* Treatment Lists */
         .treatment-list {
-            padding: 60px 0;
+            padding: 40px 0; /* Reduced padding */
             background-color: #f9f9f9;
         }
         
         .treatment-list h2 {
             text-align: center;
             color: #00C4C4;
-            margin-bottom: 40px;
-            font-size: 32px;
+            margin-bottom: 30px;
+            font-size: 1.8rem; /* Smaller font */
         }
         
         .treatment-section {
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             background-color: white;
-            padding: 30px;
+            padding: 20px; /* Reduced padding */
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
         }
         
         .treatment-section h3 {
             color: #00C4C4;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
             border-bottom: 1px solid #eee;
-            font-size: 24px;
+            font-size: 20px; /* Smaller font */
         }
         
         .treatment-item {
             display: flex;
             justify-content: space-between;
-            padding: 15px 0;
+            padding: 12px 0;
             border-bottom: 1px dashed #eee;
+            flex-wrap: wrap; /* Allow wrapping on very small screens */
         }
         
         .treatment-name {
             font-weight: bold;
+            font-size: 15px; /* Smaller font */
         }
         
         .treatment-description {
             color: #666;
             font-style: italic;
             margin: 5px 0 0;
-            font-size: 14px;
+            font-size: 13px; /* Smaller font */
         }
         
         .treatment-price {
             font-weight: bold;
             color: #00C4C4;
             white-space: nowrap;
-            margin-left: 20px;
+            margin-left: 15px;
+            font-size: 15px; /* Smaller font */
         }
         
         /* Special Offers */
         .special-offers {
-            padding: 60px 0;
+            padding: 40px 0; /* Reduced padding */
             text-align: center;
         }
         
         .special-offers h2 {
             color: #00C4C4;
-            margin-bottom: 30px;
-            font-size: 32px;
+            margin-bottom: 25px;
+            font-size: 1.8rem; /* Smaller font */
         }
         
         .offers-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Smaller min-width */
+            gap: 20px; /* Reduced gap */
         }
         
         .offer-card {
             background-color: #f9f9f9;
-            padding: 30px;
+            padding: 20px; /* Reduced padding */
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             position: relative;
@@ -327,29 +368,31 @@
         
         .offer-title {
             color: #00C4C4;
-            margin-bottom: 10px;
-            font-size: 22px;
+            margin-bottom: 8px;
+            font-size: 20px; /* Smaller font */
         }
         
         .offer-price {
-            font-size: 18px;
+            font-size: 17px; /* Smaller font */
             font-weight: bold;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
         
         .offer-description {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+            font-size: 14px; /* Smaller font */
         }
         
         .offer-btn {
             background-color: #00C4C4;
             color: white;
-            padding: 10px 20px;
+            padding: 8px 18px; /* Smaller padding */
             text-decoration: none;
             border-radius: 5px;
             font-weight: bold;
             display: inline-block;
             transition: background-color 0.3s ease;
+            font-size: 14px; /* Smaller font */
         }
         
         .offer-btn:hover {
@@ -358,33 +401,35 @@
         
         /* Booking CTA */
         .booking-cta {
-            padding: 60px 0;
+            padding: 40px 0; /* Reduced padding */
             background-color: #00C4C4;
             color: white;
             text-align: center;
         }
         
         .booking-cta h2 {
-            margin-bottom: 20px;
-            font-size: 32px;
+            margin-bottom: 15px;
+            font-size: 1.8rem; /* Smaller font */
         }
         
         .booking-cta p {
             max-width: 700px;
-            margin: 0 auto 30px;
-            font-size: 18px;
+            margin: 0 auto 20px;
+            font-size: 16px; /* Smaller font */
+            padding: 0 15px; /* Add padding for readability */
         }
         
         .booking-btn {
             background-color: white;
             color: #00C4C4;
-            padding: 12px 30px;
+            padding: 10px 25px; /* Smaller padding */
             text-decoration: none;
             border-radius: 5px;
             font-weight: bold;
             display: inline-block;
             transition: background-color 0.3s ease;
             text-transform: uppercase;
+            font-size: 14px; /* Smaller font */
         }
         
         .booking-btn:hover {
@@ -393,25 +438,27 @@
         
         /* Price List Download */
         .price-download {
-            padding: 40px 0;
+            padding: 30px 0; /* Reduced padding */
             text-align: center;
             background-color: #f0f8f8;
         }
         
         .price-download h3 {
             color: #00C4C4;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+            font-size: 18px; /* Smaller font */
         }
         
         .download-btn {
             background-color: #00C4C4;
             color: white;
-            padding: 10px 25px;
+            padding: 8px 20px; /* Smaller padding */
             text-decoration: none;
             border-radius: 5px;
             font-weight: bold;
             display: inline-block;
             transition: background-color 0.3s ease;
+            font-size: 14px; /* Smaller font */
         }
         
         .download-btn:hover {
@@ -422,7 +469,7 @@
         .footer {
             background-color: #00C4C4;
             color: white;
-            padding: 60px 0 30px;
+            padding: 40px 0 20px; /* Reduced padding */
         }
         
         .footer-top {
@@ -430,27 +477,28 @@
         }
         
         .footer-info h2 {
-            font-size: 32px;
-            margin-bottom: 20px;
+            font-size: 24px; /* Smaller font */
+            margin-bottom: 15px;
         }
         
         .social-icons {
             display: flex;
             justify-content: center;
-            margin: 30px 0;
+            margin: 20px 0;
+            flex-wrap: wrap; /* Allow wrapping on very small screens */
         }
         
         .social-icons a {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 50px;
-            height: 50px;
-            margin: 0 10px;
+            width: 40px; /* Smaller size */
+            height: 40px; /* Smaller size */
+            margin: 5px;
             border-radius: 50%;
             background-color: white;
             color: #00C4C4;
-            font-size: 24px;
+            font-size: 20px; /* Smaller font */
             text-decoration: none;
             transition: all 0.3s ease;
             box-shadow: 0 3px 10px rgba(0,0,0,0.1);
@@ -462,20 +510,20 @@
         }
         
         .copyright {
-            margin-top: 20px;
-            padding-top: 20px;
+            margin-top: 15px;
+            padding-top: 15px;
             border-top: 1px solid rgba(255, 255, 255, 0.2);
             text-align: center;
-            font-size: 14px;
+            font-size: 13px; /* Smaller font */
         }
         
         /* Scroll to Top Button */
         .scrollup {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
+            bottom: 15px;
+            right: 15px;
+            width: 35px; /* Smaller size */
+            height: 35px; /* Smaller size */
             background-color: #00C4C4;
             color: white;
             border-radius: 50%;
@@ -486,24 +534,22 @@
             opacity: 0.7;
             transition: opacity 0.3s ease;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            font-size: 16px; /* Smaller icon */
+            z-index: 999; /* Ensure it's above everything */
         }
         
         .scrollup:hover {
             opacity: 1;
         }
         
-        /* Responsive Design */
+        /* Enhanced Responsive Design */
         @media (max-width: 992px) {
             .hero h1 {
-                font-size: 2.8rem;
+                font-size: 2.2rem;
             }
             
             .hero p {
-                font-size: 1.2rem;
-            }
-            
-            .treatments-overview .container {
-                grid-template-columns: 1fr;
+                font-size: 1rem;
             }
             
             .treatment-content {
@@ -513,32 +559,112 @@
             
             .treatment-image {
                 order: 1;
-                margin-bottom: 30px;
+                margin-bottom: 20px;
+            }
+            
+            /* Display fewer columns */
+            .categories-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             }
         }
         
         @media (max-width: 768px) {
+            /* Enable mobile menu */
+            .menu-toggle {
+                display: block;
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            
+            nav {
+                display: none; /* Hide regular nav */
+            }
+            
+            .mobile-nav.active {
+                display: flex;
+            }
+            
+            /* Adjust hero section */
+            .hero {
+                height: 50vh; /* Even smaller on mobile */
+            }
+            
             .hero h1 {
-                font-size: 2.3rem;
+                font-size: 1.8rem;
             }
             
             .hero p {
-                font-size: 1.1rem;
+                font-size: 0.9rem;
             }
             
             .hero-content {
-                padding: 25px;
+                padding: 20px;
             }
             
-            .principles-grid {
-                grid-template-columns: 1fr;
+            /* Adjust grids */
+            .categories-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             }
             
+            .offers-grid {
+                grid-template-columns: 1fr; /* Single column on mobile */
+            }
+            
+            /* Make treatment items stack on tiny screens */
+            .treatment-item {
+                flex-direction: column;
+            }
+            
+            .treatment-price {
+                margin-left: 0;
+                margin-top: 5px;
+            }
+            
+            /* Smaller footer elements */
             .social-icons a {
-                width: 45px;
-                height: 45px;
-                font-size: 20px;
-                margin: 0 8px;
+                width: 35px;
+                height: 35px;
+                font-size: 18px;
+                margin: 0 5px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            /* Further adjustments for very small devices */
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+            
+            .hero p {
+                font-size: 0.85rem;
+            }
+            
+            .hero-btn {
+                padding: 8px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .treatment-section {
+                padding: 15px;
+            }
+            
+            .category-image {
+                height: 140px;
+            }
+            
+            h2 {
+                font-size: 1.5rem !important;
+            }
+            
+            h3 {
+                font-size: 1.2rem !important;
+            }
+            
+            /* Full width categories */
+            .categories-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
