@@ -16,26 +16,44 @@
         body {
             line-height: 1.6;
             color: #333;
+            overflow-x: hidden; /* Prevent horizontal scroll on mobile */
+            width: 100%;
         }
         
         .container {
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 15px;
+            padding: 0 20px; /* Increased padding for mobile */
         }
         
-        /* Header Styles - Updated to match treatments.html */
+        /* Header Styles - Enhanced Mobile Responsiveness */
         header {
             background-color: white;
             padding: 10px 0;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #333;
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            z-index: 100;
         }
         
         nav {
             display: flex;
             justify-content: center;
             align-items: center;
+            transition: all 0.3s ease;
         }
         
         nav a {
@@ -44,6 +62,7 @@
             color: #333;
             font-weight: 500;
             transition: color 0.3s ease;
+            padding: 5px 0;
         }
         
         nav a:hover {
@@ -67,13 +86,13 @@
             font-size: 16px;
         }
         
-        /* Hero Section - Enhanced */
+        /* Hero Section - Enhanced for Mobile */
         .hero {
             position: relative;
             background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('img/home.jpg');
             background-size: cover;
             background-position: center;
-            padding: 120px 0;
+            padding: 80px 0; /* Reduced padding on mobile */
             color: white;
             text-align: center;
         }
@@ -94,7 +113,7 @@
         }
         
         .hero h1 {
-            font-size: 56px;
+            font-size: 48px; /* Slightly reduced for better mobile display */
             margin-bottom: 15px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
             color: #fff;
@@ -103,16 +122,16 @@
         }
         
         .hero p {
-            font-size: 22px;
+            font-size: 20px; /* Slightly reduced for mobile */
             margin-bottom: 30px;
-            max-width: 600px;
+            max-width: 90%; /* Adjusted width for mobile */
             margin-left: auto;
             margin-right: auto;
             font-style: italic;
         }
         
         .logo img {
-            width: 150px;
+            width: 120px; /* Slightly reduced for mobile */
             height: auto;
             margin-bottom: 20px;
             border-radius: 50%;
@@ -142,16 +161,16 @@
             color: #00C4C4;
         }
         
-        /* Beautiful Care Section - Updated */
+        /* Beautiful Care Section - Mobile Optimized */
         .beautiful-care {
-            padding: 80px 0;
+            padding: 60px 0; /* Reduced padding for mobile */
             text-align: center;
             background-color: #fff;
         }
         
         .beautiful-care h2 {
             color: #00C4C4;
-            font-size: 36px;
+            font-size: 32px; /* Reduced for mobile */
             margin-bottom: 25px;
             position: relative;
             display: inline-block;
@@ -168,16 +187,16 @@
         }
         
         .beautiful-care p {
-            max-width: 800px;
+            max-width: 100%; /* Full width on mobile */
             margin: 0 auto;
-            font-size: 18px;
+            font-size: 16px; /* Reduced for mobile */
             color: #555;
             line-height: 1.8;
         }
         
-        /* Principles Section - Modernized */
+        /* Principles Section - Mobile Optimized */
         .principles {
-            padding: 80px 0;
+            padding: 60px 0; /* Reduced padding for mobile */
             background-color: #f9f9f9;
             position: relative;
         }
@@ -194,13 +213,13 @@
         
         .principles-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 20px; /* Reduced gap for mobile */
         }
         
         .principle-item {
             background-color: white;
-            padding: 40px 30px;
+            padding: 30px 20px; /* Reduced padding for mobile */
             border-radius: 10px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.05);
             transition: transform 0.3s ease;
@@ -214,7 +233,7 @@
         .principle-item h3 {
             color: #00C4C4;
             margin-bottom: 15px;
-            font-size: 24px;
+            font-size: 22px; /* Reduced for mobile */
         }
         
         .principle-item h4 {
@@ -230,17 +249,29 @@
             line-height: 1.7;
         }
         
-        /* Treatments Overview - Enhanced */
+        /* Treatments Overview - Mobile Optimized */
         .treatments-overview {
-            padding: 80px 0;
+            padding: 60px 0; /* Reduced padding for mobile */
             background-color: #fff;
         }
         
         .treatments-overview .container {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            grid-template-columns: 1fr;
+            gap: 30px; /* Reduced gap for mobile */
             align-items: center;
+        }
+        
+        .treatment-content {
+            order: 2; /* Always below image on mobile */
+            text-align: center;
+        }
+        
+        .treatment-image {
+            order: 1; /* Always above content on mobile */
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
         }
         
         .treatment-content h3 {
@@ -252,13 +283,13 @@
         
         .treatment-content h2 {
             color: #00C4C4;
-            font-size: 36px;
+            font-size: 32px; /* Reduced for mobile */
             margin-bottom: 20px;
         }
         
         .treatment-content p {
             margin-bottom: 30px;
-            font-size: 18px;
+            font-size: 16px; /* Reduced for mobile */
             line-height: 1.8;
             color: #555;
         }
@@ -274,12 +305,6 @@
             color: white;
         }
         
-        .treatment-image {
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-        
         .treatment-image img {
             width: 100%;
             height: auto;
@@ -291,40 +316,40 @@
             transform: scale(1.05);
         }
         
-        /* Location Section - Revamped */
+        /* Location Section - Mobile Optimized */
         .location {
-            padding: 80px 0;
+            padding: 60px 0; /* Reduced padding for mobile */
             background-color: #f9f9f9;
         }
         
         .location-container {
-            max-width: 800px;
+            max-width: 100%; /* Full width on mobile */
             margin: 0 auto;
             text-align: center;
         }
         
         .location-item h3 {
             color: #666;
-            font-size: 20px;
+            font-size: 18px;
             margin-bottom: 10px;
             font-style: italic;
         }
         
         .location-item h2 {
             color: #00C4C4;
-            font-size: 36px;
+            font-size: 32px; /* Reduced for mobile */
             margin-bottom: 10px;
         }
         
         .location-item h4 {
             color: #444;
-            font-size: 22px;
+            font-size: 20px; /* Reduced for mobile */
             margin-bottom: 20px;
         }
         
         .location-item p {
             margin-bottom: 10px;
-            font-size: 18px;
+            font-size: 16px; /* Reduced for mobile */
             color: #555;
         }
         
@@ -342,15 +367,15 @@
         
         .map iframe {
             width: 100%;
-            height: 400px;
+            height: 300px; /* Reduced height for mobile */
             border: none;
         }
         
-        /* Footer - Styled */
+        /* Footer - Mobile Optimized */
         .footer {
             background-color: #00C4C4;
             color: white;
-            padding: 60px 0 30px;
+            padding: 50px 0 30px; /* Reduced padding for mobile */
         }
         
         .footer-top {
@@ -358,7 +383,7 @@
         }
         
         .footer-info h2 {
-            font-size: 32px;
+            font-size: 28px; /* Reduced for mobile */
             margin-bottom: 20px;
         }
         
@@ -367,19 +392,20 @@
             display: flex;
             justify-content: center;
             margin: 30px 0;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
         }
         
         .social-icons a {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 50px;
-            height: 50px;
-            margin: 0 10px;
+            width: 45px; /* Slightly reduced for mobile */
+            height: 45px; /* Slightly reduced for mobile */
+            margin: 0 8px 10px; /* Added bottom margin for wrapped items */
             border-radius: 50%;
             background-color: white;
             color: #00C4C4;
-            font-size: 24px;
+            font-size: 20px; /* Reduced for mobile */
             text-decoration: none;
             transition: all 0.3s ease;
             box-shadow: 0 3px 10px rgba(0,0,0,0.1);
@@ -398,11 +424,11 @@
             font-size: 14px;
         }
         
-        /* Scroll to Top Button */
+        /* Scroll to Top Button - Mobile Optimized */
         .scrollup {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            bottom: 15px; /* Moved closer to bottom for mobile */
+            right: 15px; /* Moved closer to edge for mobile */
             width: 40px;
             height: 40px;
             background-color: #00C4C4;
@@ -415,48 +441,167 @@
             opacity: 0.7;
             transition: opacity 0.3s ease;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 1000; /* Ensure it's above other elements */
         }
         
         .scrollup:hover {
             opacity: 1;
         }
         
-        /* Responsive Design */
+        /* Enhanced Responsive Design */
         @media (max-width: 992px) {
             .treatments-overview .container {
                 grid-template-columns: 1fr;
             }
             
-            .treatment-content {
-                order: 2;
-                text-align: center;
+            .hero h1 {
+                font-size: 42px;
             }
             
-            .treatment-image {
-                order: 1;
-                margin-bottom: 30px;
+            .principles-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             }
         }
         
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 40px;
+            /* Mobile Menu */
+            .menu-toggle {
+                display: block;
             }
             
-            .hero p {
+            nav {
+                flex-direction: column;
+                position: fixed;
+                top: 0;
+                right: -100%; /* Hide off-screen initially */
+                width: 80%; /* Take up most of the screen */
+                max-width: 320px;
+                height: 100vh;
+                background-color: white;
+                z-index: 99;
+                padding: 70px 0 20px;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+                overflow-y: auto;
+                transition: right 0.3s ease;
+            }
+            
+            nav.active {
+                right: 0; /* Show menu when active */
+            }
+            
+            nav a {
+                margin: 10px 0;
+                padding: 10px 30px;
+                width: 100%;
+                text-align: center;
                 font-size: 18px;
             }
             
-            .principles-grid {
-                grid-template-columns: 1fr;
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .beautiful-care h2,
+            .treatment-content h2,
+            .location-item h2 {
+                font-size: 28px;
+            }
+            
+            .logo img {
+                width: 100px;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+            
+            .principle-item {
+                padding: 25px 15px;
+            }
+            
+            .map iframe {
+                height: 250px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .hero h1 {
+                font-size: 30px;
+            }
+            
+            .hero p {
+                font-size: 14px;
+            }
+            
+            .beautiful-care h2,
+            .treatment-content h2,
+            .location-item h2 {
+                font-size: 24px;
+            }
+            
+            .beautiful-care p,
+            .treatment-content p,
+            .principle-item p {
+                font-size: 14px;
             }
             
             .social-icons a {
-                width: 45px;
-                height: 45px;
-                font-size: 20px;
-                margin: 0 8px;
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+                margin: 0 6px 8px;
             }
+            
+            .footer-info h2 {
+                font-size: 24px;
+            }
+            
+            .copyright {
+                font-size: 12px;
+            }
+            
+            /* Ensure touch targets are at least 44px for iOS */
+            nav a, .btn, .social-icons a, .scrollup {
+                min-height: 44px;
+                min-width: 44px;
+            }
+        }
+        
+        /* Fix for iPhone notch areas */
+        @supports (padding: max(0px)) {
+            body, header, .hero, .footer {
+                padding-left: env(safe-area-inset-left);
+                padding-right: env(safe-area-inset-right);
+            }
+            
+            .footer {
+                padding-bottom: env(safe-area-inset-bottom);
+            }
+        }
+        
+        /* Dark overlay for mobile menu */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 98;
+        }
+        
+        .overlay.active {
+            display: block;
         }
     </style>
 </head>
@@ -470,16 +615,24 @@
         </div>
     </div>
 
-    <!-- Navigation - Updated to match treatments.html -->
+    <!-- Navigation - Enhanced for Mobile -->
     <header>
-        <nav>
-            <a href="index.html">HOME</a>
-            <a href="treatments.html">TREATMENT MENU</a>
-            <a href="about.html">ABOUT</a>
-            <a href="contact.html">CONTACT</a>
-            <a href="booking.html">BOOKING</a>
-        </nav>
+        <div class="container">
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav id="mainNav">
+                <a href="index.html">HOME</a>
+                <a href="treatments.html">TREATMENT MENU</a>
+                <a href="about.html">ABOUT</a>
+                <a href="contact.html">CONTACT</a>
+                <a href="booking.html">BOOKING</a>
+            </nav>
+        </div>
     </header>
+    
+    <!-- Dark overlay for mobile menu -->
+    <div class="overlay" id="overlay"></div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -490,12 +643,11 @@
             <div class="hero-content">
                 <h1>Hazy's Beauty & Spa</h1>
                 <p>Discover serenity, embrace radiance, and transform your wellness journey</p>
-                
             </div>
         </div>
     </section>
 
-    <!-- Beautiful Care Section - Content Updated -->
+    <!-- Beautiful Care Section -->
     <section class="beautiful-care">
         <div class="container">
             <h2>Exquisite Wellness Experience</h2>
@@ -503,7 +655,7 @@
         </div>
     </section>
 
-    <!-- Our Principles Section - Content Refreshed -->
+    <!-- Our Principles Section -->
     <section class="principles">
         <div class="container">
             <div class="principles-grid">
@@ -528,7 +680,7 @@
         </div>
     </section>
 
-    <!-- Treatments Overview - Content Enhanced -->
+    <!-- Treatments Overview -->
     <section class="treatments-overview">
         <div class="container">
             <div class="treatment-content">
@@ -543,7 +695,7 @@
         </div>
     </section>
 
-    <!-- Location Section - Content Refreshed -->
+    <!-- Location Section -->
     <section class="location">
         <div class="container">
             <div class="location-container">
@@ -562,13 +714,12 @@
         </div>
     </section>
 
-    <!-- Footer - Updated with social media icons instead of button -->
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-top">
                 <div class="footer-info">
                     <h2>Hazy's Beauty And Spa</h2>
-                    <!-- New social media icons replacing the button -->
                     <div class="social-icons">
                         <a href="https://www.facebook.com/kamogelohaze" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.instagram.com/hazysbeautyandspa" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -582,10 +733,78 @@
     </footer>
 
     <!-- Scroll to Top Button -->
-    <a href="#" class="scrollup"><i class="fas fa-angle-up"></i></a>
+    <a href="#" class="scrollup" aria-label="Scroll to Top"><i class="fas fa-angle-up"></i></a>
 
     <!-- Font Awesome for icons -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
-    <script src="js/script.js"></script>
+    
+    <!-- Mobile Menu Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const mainNav = document.getElementById('mainNav');
+            const overlay = document.getElementById('overlay');
+            
+            // Toggle menu when hamburger is clicked
+            menuToggle.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+                overlay.classList.toggle('active');
+                
+                // Change icon based on menu state
+                const icon = menuToggle.querySelector('i');
+                if (mainNav.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+            
+            // Close menu when overlay is clicked
+            overlay.addEventListener('click', function() {
+                mainNav.classList.remove('active');
+                overlay.classList.remove('active');
+                
+                const icon = menuToggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+            
+            // Close menu when link is clicked
+            const navLinks = mainNav.querySelectorAll('a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mainNav.classList.remove('active');
+                    overlay.classList.remove('active');
+                    
+                    const icon = menuToggle.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                });
+            });
+            
+            // Scroll to top functionality
+            const scrollBtn = document.querySelector('.scrollup');
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    scrollBtn.style.display = 'flex';
+                } else {
+                    scrollBtn.style.display = 'none';
+                }
+            });
+            
+            scrollBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Initially hide scroll button
+            scrollBtn.style.display = 'none';
+        });
+    </script>
 </body>
 </html>
