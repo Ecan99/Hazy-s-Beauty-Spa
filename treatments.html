@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treatment Menu - Hazy's Beauty & Spa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Top Bar */
+        .top-bar {
+            background-color: #f8f8f8;
+            padding: 5px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .social-links {
+            text-align: right;
+        }
+        
+        .social-links a {
+            color: #00C4C4;
+            margin-left: 10px;
+            font-size: 16px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            padding: 10px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        nav a:hover {
+            color: #00C4C4;
+        }
+        
+        /* Hero Section with Modern Styling */
+        .hero {
+            background-image: url('./img/back.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            text-align: center;
+            padding: 150px 20px;
+            position: relative;
+            color: white;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 40px;
+            border-radius: 12px;
+            background-color: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero h1 {
+            color: white;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
+            font-weight: 700;
+        }
+        
+        .hero p {
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            font-size: 1.4rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+        }
+        
+        .hero-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #00C4C4, #009090);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Old Treatments Hero Section - Hidden/Replaced */
+        .treatments-hero {
+            display: none; /* Hide the old hero section */
+        }
+        
+        /* Treatment Categories Section */
+        .treatment-categories {
+            padding: 60px 0;
+        }
+        
+        .treatment-categories h2 {
+            text-align: center;
+            color: #00C4C4;
+            margin-bottom: 40px;
+            font-size: 32px;
+        }
+        
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .category-card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .category-image {
+            height: 250px;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .category-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .category-details {
+            padding: 20px;
+        }
+        
+        .category-title {
+            color: #00C4C4;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+        
+        .category-description {
+            margin-bottom: 15px;
+            color: #666;
+        }
+        
+        /* Treatment Lists */
+        .treatment-list {
+            padding: 60px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .treatment-list h2 {
+            text-align: center;
+            color: #00C4C4;
+            margin-bottom: 40px;
+            font-size: 32px;
+        }
+        
+        .treatment-section {
+            margin-bottom: 40px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .treatment-section h3 {
+            color: #00C4C4;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            font-size: 24px;
+        }
+        
+        .treatment-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px dashed #eee;
+        }
+        
+        .treatment-name {
+            font-weight: bold;
+        }
+        
+        .treatment-description {
+            color: #666;
+            font-style: italic;
+            margin: 5px 0 0;
+            font-size: 14px;
+        }
+        
+        .treatment-price {
+            font-weight: bold;
+            color: #00C4C4;
+            white-space: nowrap;
+            margin-left: 20px;
+        }
+        
+        /* Special Offers */
+        .special-offers {
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .special-offers h2 {
+            color: #00C4C4;
+            margin-bottom: 30px;
+            font-size: 32px;
+        }
+        
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .offer-card {
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .offer-tag {
+            position: absolute;
+            top: 10px;
+            right: -30px;
+            background-color: #00C4C4;
+            color: white;
+            padding: 5px 30px;
+            transform: rotate(45deg);
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .offer-title {
+            color: #00C4C4;
+            margin-bottom: 10px;
+            font-size: 22px;
+        }
+        
+        .offer-price {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .offer-description {
+            margin-bottom: 20px;
+        }
+        
+        .offer-btn {
+            background-color: #00C4C4;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+        
+        .offer-btn:hover {
+            background-color: #00a0a0;
+        }
+        
+        /* Booking CTA */
+        .booking-cta {
+            padding: 60px 0;
+            background-color: #00C4C4;
+            color: white;
+            text-align: center;
+        }
+        
+        .booking-cta h2 {
+            margin-bottom: 20px;
+            font-size: 32px;
+        }
+        
+        .booking-cta p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 18px;
+        }
+        
+        .booking-btn {
+            background-color: white;
+            color: #00C4C4;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+            text-transform: uppercase;
+        }
+        
+        .booking-btn:hover {
+            background-color: #f0f0f0;
+        }
+        
+        /* Price List Download */
+        .price-download {
+            padding: 40px 0;
+            text-align: center;
+            background-color: #f0f8f8;
+        }
+        
+        .price-download h3 {
+            color: #00C4C4;
+            margin-bottom: 20px;
+        }
+        
+        .download-btn {
+            background-color: #00C4C4;
+            color: white;
+            padding: 10px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+        
+        .download-btn:hover {
+            background-color: #00a0a0;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: #00C4C4;
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-top {
+            text-align: center;
+        }
+        
+        .footer-info h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            margin: 0 10px;
+            border-radius: 50%;
+            background-color: white;
+            color: #00C4C4;
+            font-size: 24px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .social-icons a:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            font-size: 14px;
+        }
+        
+        /* Scroll to Top Button */
+        .scrollup {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: #00C4C4;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .scrollup:hover {
+            opacity: 1;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .treatments-overview .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .treatment-content {
+                order: 2;
+                text-align: center;
+            }
+            
+            .treatment-image {
+                order: 1;
+                margin-bottom: 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .hero-content {
+                padding: 25px;
+            }
+            
+            .principles-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .social-icons a {
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+                margin: 0 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.facebook.com/kamogelohaze"><i class="fab fa-facebook-f"></i> Follow Us</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Header Navigation -->
+    <header>
+        <nav>
+            <a href="index.html">HOME</a>
+            <a href="treatments.html">TREATMENT MENU</a>
+            <a href="about.html">ABOUT</a>
+            <a href="contact.html">CONTACT</a>
+            <a href="booking.html">BOOKING</a>
+        </nav>
+    </header>
+    
+    <!-- Hero Section - Modern Version -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Our Treatment Menu</h1>
+            <p>Discover our range of luxury treatments designed to rejuvenate your body and mind. From massage therapy to beauty treatments, we have everything you need for total relaxation.</p>
+            <a href="#treatments" class="hero-btn">Explore Treatments</a>
+        </div>
+    </section>
+    
+    <!-- Treatment Categories Section -->
+    <section id="treatments" class="treatment-categories">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="categories-grid">
+                <!-- Category 1 -->
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="img/back.jpg" alt="Massage Therapy">
+                    </div>
+                    <div class="category-details">
+                        <h3 class="category-title">Massage Therapy</h3>
+                        <p class="category-description">Relax, rejuvenate and release tension with our range of therapeutic massages.</p>
+                    </div>
+                </div>
+                
+                <!-- Category 2 -->
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="img/skin.jpg" alt="Skincare Treatments">
+                    </div>
+                    <div class="category-details">
+                        <h3 class="category-title">Skincare Treatments</h3>
+                        <p class="category-description">Revitalize your skin with our professional facials and skincare solutions.</p>
+                    </div>
+                </div>
+                
+                <!-- Category 3 -->
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="img/nail.jpg" alt="Nail Services">
+                    </div>
+                    <div class="category-details">
+                        <h3 class="category-title">Nail Services</h3>
+                        <p class="category-description">Treat your hands and feet to our luxurious manicures and pedicures.</p>
+                    </div>
+                </div>
+                
+                <!-- Category 4 -->
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="img/hair.jpg" alt="Hair Services">
+                    </div>
+                    <div class="category-details">
+                        <h3 class="category-title">Hair Services</h3>
+                        <p class="category-description">From Brazilian hair to installations, we offer complete hair solutions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Treatment Lists -->
+    <section class="treatment-list">
+        <div class="container">
+            <h2>Treatment Menu</h2>
+            
+            <!-- Massage Therapy Treatments -->
+            <div class="treatment-section">
+                <h3>Massage Therapy</h3>
+                
+                <div class="treatment-item">
+                    <div>
+                        <div class="treatment-name">Full Body Massage</div>
+                        <p class="treatment-description">A complete massage focusing on tension relief and relaxation</p>
+                    </div>
+                    <div class="treatment-price">R600</div>
+                </div>
+                
+                <div class="treatment-item">
+                    <div>
+                        <div class="treatment-name">Back, Neck & Shoulder Massage</div>
+                        <p class="treatment-description">Targeted relief for the most common areas of tension</p>
+                    </div>
+                    <div class="treatment-price">R350</div>
+                </div>
+                
+                <div class="treatment-item">
+                    <div>
+                        <div class="treatment-name">Hot Stone Massage</div>
+                        <p class="treatment-description">Heated stones to ease muscle tension and improve circulation</p>
+                    </div>
+                    <div class="treatment-price">R750</div>
+                </div>
+                
+                <div class="treatment-item">
+                    <div>
+                        <div class="treatment-name">Aromatherapy Massage</div>
+                        <p class="treatment-description">Using essential oils for a deeply relaxing experience</p>
+                    </div>
+                    <div class="treatment-price">R700</div>
+                </div>
+            </div>
+            
+            <!-- Skincare Treatments -->
+            <div class="treatment-section">
+                <h3>Skincare Treatments</h3>
+                
+                <div class="treatment-item">
+                    <div>
+                        <div class="treatment-name">Deep Cleansing Facial</div>
+                        <p class="treatment-description">Thoroughly cleanse and refresh your skin</p>
+                    </div>
+                    <div class="treatment-price">R450</div>
+                </div>
+                
+                <div class="treatment-item">
+                    <div>
+                        <div class="treatment-name">Anti-Aging Facial</div>
+                        <p class="treatment-description">Rejuvenating treatment to reduce fine lines and wrinkles</p>
+                    </div>
+                    <div class="treatment-price">R550</div>
+                </div>
+                
+                <div class="treatment-item">
+                    <div>
+                        <div class="treatment-name">Hydrating Facial</div>
+                        <p class="treatment-description">Restore moisture and radiance to dry skin</p>
+                    </div>
+                    <div class="treatment-price">R500</div>
+                </div>
+                
+                <div class="treatment-item">
+                    <div>
+                        <div class="treatment-name">Skin Tag Removal</div>
+                        <p class="treatment-description">Safe and effective removal of skin tags</p>
+                    </div>
+                    <div class="treatment-price">R300</div>
+                </div>
+            </div>
+            
+            <!-- Nail Services -->
+            <div class="treatment-section">
+                <h3>Nail Services</h3>
+                
+                <div class="treatment-item">
+                    <div>
+                        <div class="treatment-name">Gel Overlay</div>
+                        <p class="treatment-description">Long-lasting, chip-resistant nail enhancement</p>
+                    </div>
+                    <div class="treatment-price">R250</div>
+                </div>
+                
+                <div class="treatment-item">
+                    <div>
+                        <div class="treatment-name">Acrylic Nails</div>
+                        <p class="treatment-description">Full set of custom acrylic nails</p>
+                    </div>
+                    <div class="treatment-price">R350</div>
+                </div>
+                
+                <div class="treatment-item">
+                    <div>
+                        <div class="treatment-name">Manicure</div>
+                        <p class="treatment-description">Complete hand and nail care</p>
+                    </div>
+                    <div class="treatment-price">R200</div>
+                </div>
+                
+                <div class="treatment-item">
+                    <div>
+                        <div class="treatment-name">Pedicure</div>
+                        <p class="treatment-description">Rejuvenating foot and nail treatment</p>
+                    </div>
+                    <div class="treatment-price">R250</div>
+                </div>
+            </div>
+            
+            <!-- Hair & Beauty Services -->
+            <div class="treatment-section">
+                <h3>Hair & Beauty Services</h3>
+                
+                <div class="treatment-item">
+                    <div>
+                        <div class="treatment-name">Ombre Brows</div>
+                        <p class="treatment-description">Create natural-looking, fuller eyebrows</p>
+                    </div>
+                    <div class="treatment-price">R450</div>
+                </div>
+                
+                <div class="treatment-item">
+                    <div>
+                        <div class="treatment-name">Lash Extensions</div>
+                        <p class="treatment-description">Enhance your lashes for a fuller, longer look</p>
+                    </div>
+                    <div class="treatment-price">R400</div>
+                </div>
+                
+                <div class="treatment-item">
+                    <div>
+                        <div class="treatment-name">Brazilian Hair</div>
+                        <p class="treatment-description">Premium quality hair extensions</p>
+                    </div>
+                    <div class="treatment-price">R1200</div>
+                </div>
+                
+                <div class="treatment-item">
+                    <div>
+                        <div class="treatment-name">Hair Installation</div>
+                        <p class="treatment-description">Professional installation of hair extensions</p>
+                    </div>
+                    <div class="treatment-price">R500</div>
+                </div>
+            </div>
+            
+            <!-- Kid's Spa Services -->
+            <div class="treatment-section">
+                <h3>Kiddies Spa</h3>
+                
+                <div class="treatment-item">
+                    <div>
+                        <div class="treatment-name">Mini Manicure</div>
+                        <p class="treatment-description">Gentle nail care for young hands</p>
+                    </div>
+                    <div class="treatment-price">R120</div>
+                </div>
+                
+                <div class="treatment-item">
+                    <div>
+                        <div class="treatment-name">Mini Pedicure</div>
+                        <p class="treatment-description">Fun foot care for little toes</p>
+                    </div>
+                    <div class="treatment-price">R150</div>
+                </div>
+                
+                <div class="treatment-item">
+                    <div>
+                        <div class="treatment-name">Gentle Facial</div>
+                        <p class="treatment-description">Kid-friendly facial using mild products</p>
+                    </div>
+                    <div class="treatment-price">R200</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Special Offers -->
+    <section class="special-offers">
+        <div class="container">
+            <h2>Special Offers</h2>
+            <div class="offers-grid">
+                <!-- Offer 1 -->
+                <div class="offer-card">
+                    <div class="offer-tag">SAVE 15%</div>
+                    <h3 class="offer-title">Pamper Package</h3>
+                    <p class="offer-price">R1000</p>
+                    <p class="offer-description">Includes full body massage, facial, and manicure for complete relaxation.</p>
+                    <a href="booking.html" class="offer-btn">Book Now</a>
+                </div>
+                
+                <!-- Offer 2 -->
+                <div class="offer-card">
+                    <div class="offer-tag">SAVE 10%</div>
+                    <h3 class="offer-title">Beauty Bundle</h3>
+                    <p class="offer-price">R850</p>
+                    <p class="offer-description">Enjoy a facial, lash extensions, and ombre brows for a stunning new look.</p>
+                    <a href="booking.html" class="offer-btn">Book Now</a>
+                </div>
+                
+                <!-- Offer 3 -->
+                <div class="offer-card">
+                    <div class="offer-tag">NEW!</div>
+                    <h3 class="offer-title">Training Course</h3>
+                    <p class="offer-price">R2500</p>
+                    <p class="offer-description">Learn professional beauty techniques in our comprehensive training program.</p>
+                    <a href="booking.html" class="offer-btn">Enquire Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Booking CTA -->
+    <section class="booking-cta">
+        <div class="container">
+            <h2>Book Your Treatment Today</h2>
+            <p>Treat yourself to relaxation and rejuvenation at Hazy's Beauty & Spa. Our friendly staff are ready to welcome you for an unforgettable spa experience.</p>
+            <a href="booking.html" class="booking-btn">Book Now</a>
+        </div>
+    </section>
+    
+    <!-- Price List Download -->
+    <section class="price-download">
+        <div class="container">
+            <h3>Download Our Complete Price List</h3>
+            <a href="pricelist.pdf" class="download-btn" download>Download PDF</a>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-info">
+                    <h2>Hazy's Beauty And Spa</h2>
+                    <!-- Social media icons with proper links -->
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/kamogelohaze" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/hazysbeautyandspa" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/27784257651" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="mailto:Kamogelosekgota993@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                    <p class="copyright">Copyright © 2025 Hazy's Beauty And Spa | All Rights Reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+  
+    <!-- Scroll to Top Button -->
+    <a href="#" class="scrollup"><i class="fas fa-angle-up"></i></a>
+</body>
+</html>

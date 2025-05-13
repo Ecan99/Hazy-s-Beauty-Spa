@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book an Appointment - Hazy's Beauty & Spa</title>
+    <!-- Add Font Awesome for social media icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles - Updated to match treatments.html */
+        header {
+            background-color: white;
+            padding: 10px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        nav a:hover {
+            color: #00C4C4;
+        }
+        
+        /* Top Bar */
+        .top-bar {
+            background-color: #f8f8f8;
+            padding: 5px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .social-links {
+            text-align: right;
+        }
+        
+        .social-links a {
+            color: #00C4C4;
+            margin-left: 10px;
+            font-size: 16px;
+        }
+        /* Hero Section with Modern Styling */
+        .hero {
+            background-image: url('img/back.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            text-align: center;
+            padding: 150px 20px;
+            position: relative;
+            color: white;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 30px;
+            border-radius: 8px;
+            background-color: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(3px);
+        }
+        
+        .hero h1 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+            font-weight: 600;
+        }
+        
+        .hero p {
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.3rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+        }
+        
+        /* Booking Section */
+        .booking-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+        
+        .booking-section h2 {
+            color: #00C4C4;
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.2rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .booking-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #00C4C4;
+        }
+        
+        .booking-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+        
+        .booking-info {
+            padding: 30px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .booking-info:hover {
+            transform: translateY(-5px);
+        }
+        
+        .booking-info h3 {
+            color: #00C4C4;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .booking-info p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        /* Form Styles */
+        .booking-form {
+            padding: 40px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+        }
+        
+        .booking-form h3 {
+            color: #00C4C4;
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 22px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #444;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #00C4C4;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 196, 196, 0.2);
+        }
+        
+        button {
+            background-color: #00C4C4;
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            width: 100%;
+            box-shadow: 0 4px 15px rgba(0, 196, 196, 0.3);
+        }
+        
+        button:hover {
+            background-color: #00a0a0;
+            transform: translateY(-3px);
+        }
+        
+        /* Price List Section */
+        .pricelist-section {
+            background-color: #f8f8f8;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .pricelist-section .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .pricelist-section h2 {
+            color: #00C4C4;
+            margin-bottom: 20px;
+            font-size: 2.2rem;
+            position: relative;
+            padding-bottom: 15px;
+            display: inline-block;
+        }
+
+        .pricelist-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: #00C4C4;
+        }
+
+        .pricelist-section p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+        
+        .pricelist-btn {
+            display: inline-block;
+            background-color: #00C4C4;
+            color: white;
+            text-decoration: none;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(0, 196, 196, 0.3);
+            border: 2px solid #00C4C4;
+        }
+        
+        .pricelist-btn:hover {
+            background-color: transparent;
+            color: #00C4C4;
+            transform: translateY(-3px);
+        }
+       
+        /* Footer - Styled */
+        .footer {
+            background-color: #00C4C4;
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-top {
+            text-align: center;
+        }
+        
+        .footer-info h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        
+        /* Updated social icons styles */
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            margin: 0 10px;
+            border-radius: 50%;
+            background-color: white;
+            color: #00C4C4;
+            font-size: 24px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .social-icons a:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            font-size: 14px;
+        }
+        
+        /* Scroll to Top Button */
+        .scrollup {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: #00C4C4;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            font-size: 18px;
+        }
+        
+        .scrollup:hover {
+            opacity: 1;
+            transform: translateY(-5px);
+        }
+        
+        /* Form Success/Error Message */
+        .message {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+        }
+        
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .error-message {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .booking-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .booking-info {
+                margin-bottom: 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                height: 60vh;
+                padding: 100px 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .social-icons a {
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+                margin: 0 8px;
+            }
+
+            .booking-form, 
+            .booking-info {
+                padding: 25px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            nav {
+                flex-wrap: wrap;
+            }
+
+            nav a {
+                margin: 5px 10px;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-content {
+                padding: 20px;
+            }
+
+            .booking-section h2,
+            .pricelist-section h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+   <!-- Top Bar -->
+   <div class="top-bar">
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.facebook.com/kamogelohaze"><i class="fab fa-facebook-f"></i> Follow Us</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header with Navigation -->
+    <header>
+        <nav>
+          <a href="index.html">HOME</a>
+          <a href="treatments.html">TREATMENT MENU</a>
+          <a href="about.html">ABOUT</a>
+          <a href="contact.html">CONTACT</a>
+          <a href="booking.html">BOOKING</a>
+        </nav>
+    </header>
+    
+    <!-- Hero Section with Background Image -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Book Your Spa Experience</h1>
+            <p>Treat yourself to relaxation and rejuvenation at Hazy's Beauty & Spa</p>
+        </div>
+    </section>
+    
+    <!-- Booking Section -->
+    <section id="booking-section" class="booking-section">
+      <h2>Book an Appointment</h2>
+  
+      <div class="booking-grid">
+        <div class="booking-info">
+          <h3>How to Book</h3>
+          <p>To book your treatment, please call us at <strong>078 425 7651</strong> or fill out our online booking form.</p>
+          <p>Our award-winning Beauty Team will ensure that you always look your best!</p>
+          <p>We recommend booking at least 24 hours in advance.</p>
+  
+          <h3>Cancellation Policy</h3>
+          <p>If you need to cancel or reschedule, please do so 24 hours in advance to avoid cancellation fees.</p>
+        </div>
+  
+        <div class="booking-form">
+          <h3>Book Your Treatment</h3>
+          <form id="bookingForm" onsubmit="sendToWhatsApp(event)">
+            <div class="form-group">
+              <label for="fullName">Full Name</label>
+              <input type="text" id="fullName" name="fullName" required />
+            </div>
+  
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+  
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" required />
+            </div>
+  
+            <div class="form-group">
+              <label for="service">Service Required</label>
+              <select id="service" name="service" required>
+                <option value="">Select a Service</option>
+                <option value="Massage Therapy">Massage Therapy</option>
+                <option value="Skincare Treatments">Skincare Treatments</option>
+                <option value="Nail Services">Nail Services</option>
+                <option value="Hair & Beauty Services">Hair & Beauty Services</option>
+                <option value="Kiddies Spa">Kiddies Spa</option>
+                <option value="Other">Others</option>
+              </select>
+            </div>
+  
+            <div class="form-group">
+              <label for="preferredDate">Preferred Date</label>
+              <input type="date" id="preferredDate" name="preferredDate" required />
+            </div>
+  
+            <div class="form-group">
+              <label for="preferredTime">Preferred Time</label>
+              <select id="preferredTime" name="preferredTime" required>
+                <option value="">Select a Time</option>
+                <option value="09:00">09:00 AM</option>
+                <option value="10:00">10:00 AM</option>
+                <option value="11:00">11:00 AM</option>
+                <option value="12:00">12:00 PM</option>
+                <option value="13:00">01:00 PM</option>
+                <option value="14:00">02:00 PM</option>
+                <option value="15:00">03:00 PM</option>
+                <option value="16:00">04:00 PM</option>
+                <option value="17:00">05:00 PM</option>
+              </select>
+            </div>
+  
+            <div class="form-group">
+              <label for="specialRequests">Special Requests</label>
+              <textarea id="specialRequests" name="specialRequests" rows="4"></textarea>
+            </div>
+  
+            <button type="submit">Book Appointment</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  
+    <section class="pricelist-section">
+      <div class="container">
+        <h2>Download Our Price List</h2>
+        <p>Get our complete price list with all services and treatments.</p>
+        <a href="pricelist.pdf" class="pricelist-btn" download>Download PDF</a>
+      </div>
+    </section>
+  
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-top">
+          <div class="footer-info">
+            <h2>Hazy's Beauty And Spa</h2>
+            <div class="social-icons">
+              <a href="https://www.facebook.com/kamogelohaze"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://www.instagram.com/hazysbeautyandspa"><i class="fab fa-instagram"></i></a>
+              <a href="https://wa.me/27784257651"><i class="fab fa-whatsapp"></i></a>
+              <a href="mailto:Kamogelosekgota993@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p class="copyright">Copyright © 2025 Hazy's Beauty And Spa | All Rights Reserved</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  
+    <a href="#" class="scrollup"><i class="fas fa-angle-up"></i></a>
+  
+    <script>
+      // Scroll to top functionality
+      document.addEventListener('DOMContentLoaded', function () {
+        const scrollUpButton = document.querySelector('.scrollup');
+        window.addEventListener('scroll', function () {
+          scrollUpButton.style.opacity = window.pageYOffset > 300 ? '1' : '0';
+        });
+        scrollUpButton.addEventListener('click', function (e) {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      });
+      
+      // Format date for display
+      function formatDate(dateString) {
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        return new Date(dateString).toLocaleDateString(undefined, options);
+      }
+      
+      // WhatsApp booking function
+      function sendToWhatsApp(event) {
+        event.preventDefault();
+        
+        // Get form values
+        const fullName = document.getElementById('fullName').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const service = document.getElementById('service').value;
+        const preferredDate = document.getElementById('preferredDate').value;
+        const preferredTime = document.getElementById('preferredTime').value;
+        const specialRequests = document.getElementById('specialRequests').value;
+        
+        // Format date for better readability
+        const formattedDate = formatDate(preferredDate);
+        
+        // Create WhatsApp message
+        let message = 
+            "Hello, I'd like to book an appointment at Hazy's Beauty & Spa.\n\n" +
+            "Name: " + fullName + "\n" +
+            "Email: " + email + "\n" +
+            "Phone: " + phone + "\n" +
+            "Service: " + service + "\n" +
+            "Preferred Date: " + formattedDate + "\n" +
+            "Preferred Time: " + preferredTime;
+        
+        if (specialRequests) {
+            message += "\n\nSpecial Requests: " + specialRequests;
+        }
+        
+        // Encode the message for URL
+        const encodedMessage = encodeURIComponent(message);
+        
+        // Redirect to WhatsApp with the booking information
+        window.location.href = "https://wa.me/27765959004?text=" + encodedMessage;
+      }
+    </script>
+  </body>
+  </html>
